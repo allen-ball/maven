@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <plugins>
+    <plugin>
+      <name>Artifact Attach Maven Plugin</name>
+      <prefix>ball-artifact</prefix>
+      <artifactId>ball-artifact-maven-plugin</artifactId>
+    </plugin>
+    <plugin>
+      <name>License Maven Plugin</name>
+      <prefix>ball-license</prefix>
+      <artifactId>ball-license-maven-plugin</artifactId>
+    </plugin>
+    <plugin>
+      <name>Download Maven Plugin</name>
+      <prefix>ball-download</prefix>
+      <artifactId>ball-download-maven-plugin</artifactId>
+    </plugin>
+  </plugins>
+</metadata>

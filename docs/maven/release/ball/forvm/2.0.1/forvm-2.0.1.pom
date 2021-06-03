@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ##########################################################################
+  $Id: pom.xml 7278 2021-01-04 02:00:04Z ball $
+  $HeadURL: svn+ssh://svn.hcf.dev/var/spool/scm/repository.svn/forvm/trunk/pom.xml $
+  %%
+  Copyright (C) 2018 - 2021 Allen D. Ball
+  %%
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ##########################################################################
+  -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <name>forvm Blog Publishing Platform</name>
+  <description></description>
+  <groupId>ball</groupId>
+  <artifactId>forvm</artifactId>
+  <version>2.0.1</version>
+  <packaging>jar</packaging>
+  <parent>
+    <groupId>ball</groupId>
+    <artifactId>parent</artifactId>
+    <version>20210103.0</version>
+    <relativePath>../ball/parent/pom.xml</relativePath>
+  </parent>
+  <inceptionYear>2018</inceptionYear>
+  <licenses>
+    <license>
+      <name>Apache-2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <profiles>
+    <profile>
+      <id>spring-boot:run</id>
+      <dependencies>
+        <dependency>
+          <groupId>ball</groupId>
+          <artifactId>ball-spring-mysqld-starter</artifactId>
+          <scope>runtime</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.springframework.cloud</groupId>
+          <artifactId>spring-cloud-gcp-starter-sql-mysql</artifactId>
+          <scope>runtime</scope>
+        </dependency>
+      </dependencies>
+      <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <groupId>ball</groupId>
+              <artifactId>ball-license-maven-plugin</artifactId>
+              <configuration>
+                <selections>
+                  <selection>
+                    <artifact>mysql:mysql-connector-java</artifact>
+                    <license>GPL-2.0 WITH Universal-FOSS-exception-1.0</license>
+                  </selection>
+                </selections>
+              </configuration>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+      </build>
+    </profile>
+  </profiles>
+  <properties>
+    <jse.target>11</jse.target>
+    <start-class>forvm.Launcher</start-class>
+  </properties>
+  <dependencies verbose="true">
+    <dependency>
+      <groupId>ball</groupId>
+      <artifactId>ball-databind</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>ball</groupId>
+      <artifactId>ball-persistence</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>ball</groupId>
+      <artifactId>ball-spring</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>ball</groupId>
+      <artifactId>ball-util</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.vladsch.flexmark</groupId>
+      <artifactId>flexmark-all</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-compress</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tika</groupId>
+      <artifactId>tika-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-validation</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-oauth2-client</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-oauth2-jose</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.thymeleaf.extras</groupId>
+      <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>bootstrap</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>jquery</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>popper.js</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars.npm</groupId>
+      <artifactId>prismjs</artifactId>
+    </dependency>
+  </dependencies>
+</project>
