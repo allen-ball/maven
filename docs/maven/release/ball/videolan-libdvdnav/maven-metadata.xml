@@ -3,13 +3,14 @@
   <groupId>ball</groupId>
   <artifactId>videolan-libdvdnav</artifactId>
   <versioning>
-    <release>1.0.1.20210415</release>
+    <release>1.0.1.20210611</release>
     <versions>
       <version>1.0.0</version>
       <version>1.0.1</version>
       <version>1.0.1.20210218</version>
       <version>1.0.1.20210415</version>
+      <version>1.0.1.20210611</version>
     </versions>
-    <lastUpdated>20210415231544</lastUpdated>
+    <lastUpdated>20210612021259</lastUpdated>
   </versioning>
 </metadata>
