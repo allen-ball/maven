@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ##########################################################################
+  $Id: pom.xml 8129 2021-06-22 16:40:54Z ball $
+  $HeadURL: svn+ssh://svn.hcf.dev/var/spool/scm/repository.svn/ball-wagon-providers/trunk/pom.xml $
+  %%
+  Copyright (C) 2017 - 2021 Allen D. Ball
+  %%
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ##########################################################################
+  -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <name>Maven Wagon Providers</name>
+  <description></description>
+  <groupId>ball</groupId>
+  <artifactId>ball-wagon-providers</artifactId>
+  <version>3.2.2.20210622</version>
+  <packaging>jar</packaging>
+  <parent>
+    <groupId>ball</groupId>
+    <artifactId>parent</artifactId>
+    <version>20210622.0</version>
+    <relativePath>../ball/parent/pom.xml</relativePath>
+  </parent>
+  <inceptionYear>2017</inceptionYear>
+  <licenses>
+    <license>
+      <name>Apache-2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <properties>
+    <jse.target>8</jse.target>
+    <maven.javadoc.skip>true</maven.javadoc.skip>
+  </properties>
+  <dependencies verbose="true">
+    <dependency>
+      <groupId>com.amazonaws</groupId>
+      <artifactId>aws-java-sdk-s3</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.google.cloud</groupId>
+      <artifactId>google-cloud-storage</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven.wagon</groupId>
+      <artifactId>wagon-provider-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tika</groupId>
+      <artifactId>tika-java7</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+  </dependencies>
+</project>
