@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ##########################################################################
+  $Id: pom.xml 8204 2021-06-26 02:17:28Z ball $
+  $HeadURL: svn+ssh://svn.hcf.dev/var/spool/scm/repository.svn/ball-spring/trunk/pom.xml $
+  %%
+  Copyright (C) 2018 - 2021 Allen D. Ball
+  %%
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ##########################################################################
+  -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <name>Reusable Spring Components (Parent)</name>
+  <description></description>
+  <groupId>ball</groupId>
+  <artifactId>ball-spring-parent</artifactId>
+  <version>2.2.0.20210625</version>
+  <packaging>pom</packaging>
+  <parent>
+    <groupId>ball</groupId>
+    <artifactId>parent</artifactId>
+    <version>20210625.0</version>
+    <relativePath>../ball/parent/pom.xml</relativePath>
+  </parent>
+  <inceptionYear>2018</inceptionYear>
+  <licenses>
+    <license>
+      <name>Apache-2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <properties>
+    <jse.target>8</jse.target>
+  </properties>
+  <modules>
+    <module>jar</module>
+    <module>jig-starter</module>
+    <module>mysqld-starter</module>
+  </modules>
+</project>
