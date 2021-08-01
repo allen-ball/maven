@@ -16,5 +16,10 @@
       <prefix>ball-download</prefix>
       <artifactId>ball-download-maven-plugin</artifactId>
     </plugin>
+    <plugin>
+      <name>Javadoc Maven Plugin</name>
+      <prefix>ball-javadoc</prefix>
+      <artifactId>ball-javadoc-maven-plugin</artifactId>
+    </plugin>
   </plugins>
 </metadata>
