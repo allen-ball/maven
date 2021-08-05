@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <name>ball</name>
+  <groupId>dev.hcf</groupId>
+  <artifactId>repo</artifactId>
+  <packaging>pom</packaging>
+  <parent>
+    <groupId>ball</groupId>
+    <artifactId>parent</artifactId>
+    <version>20210722.1</version>
+    <relativePath/>
+  </parent>
+  <profiles>
+    <profile>
+      <id>regenerate-checksums</id>
+      <build>
+        <defaultGoal>antrun:run</defaultGoal>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>generate-checksums</id>
+                <phase>generate-sources</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <target>
+                <checksum forceoverwrite="true" pattern="{0}" algorithm="md5">
+                  <fileset dir="docs">
+                    <include name="**/*.jar"/>
+                    <include name="**/*.pom"/>
+                    <include name="**/*.zip"/>
+                    <include name="**/maven-metadata.xml"/>
+                  </fileset>
+                </checksum>
+                <checksum forceoverwrite="true" pattern="{0}" algorithm="sha1">
+                  <fileset dir="docs">
+                    <include name="**/*.jar"/>
+                    <include name="**/*.pom"/>
+                    <include name="**/*.zip"/>
+                    <include name="**/maven-metadata.xml"/>
+                  </fileset>
+                </checksum>
+              </target>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>
