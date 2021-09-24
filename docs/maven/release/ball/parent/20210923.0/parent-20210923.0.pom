@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   ##########################################################################
-  $Id: pom.xml 8497 2021-09-24 02:09:59Z ball $
+  $Id: pom.xml 8540 2021-09-24 05:10:16Z ball $
   $HeadURL: svn+ssh://svn.hcf.dev/var/spool/scm/repository.svn/ball/trunk/parent/pom.xml $
   %%
   Copyright (C) 2015 - 2021 Allen D. Ball
@@ -111,13 +111,13 @@
     <ball-license-maven-plugin.version>2.1.0.20210923</ball-license-maven-plugin.version>
     <ball-persistence.version>1.6.0.20210923</ball-persistence.version>
     <ball-spring.version>2.3.0.20210820</ball-spring.version>
-    <ball-tools-javadoc.version>3.1.0.20210820</ball-tools-javadoc.version>
+    <ball-tools-javadoc.version>3.1.0.20210923</ball-tools-javadoc.version>
     <ball-upnp.version>3.1.0.20210923</ball-upnp.version>
     <ball-util.version>6.3.0.20210923</ball-util.version>
     <schemas-upnp-org.version>20151231.0</schemas-upnp-org.version>
 
     <ant.version>1.10.11</ant.version>
-    <aws-java-sdk.version>1.12.72</aws-java-sdk.version>
+    <aws-java-sdk.version>1.12.73</aws-java-sdk.version>
     <ivy.version>2.5.0</ivy.version>
     <maven.version>3.8.2</maven.version>
     <maven-resolver-ant-tasks.version>1.3.1</maven-resolver-ant-tasks.version>
