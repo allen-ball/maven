@@ -3,13 +3,14 @@
   <groupId>ball</groupId>
   <artifactId>ball-java-jar</artifactId>
   <versioning>
-    <release>1.0.0.20220314</release>
+    <release>1.0.0.20220604</release>
     <versions>
       <version>1.0.0</version>
       <version>1.0.0.20210218</version>
       <version>1.0.0.20220227</version>
       <version>1.0.0.20220314</version>
+      <version>1.0.0.20220604</version>
     </versions>
-    <lastUpdated>20220316172014</lastUpdated>
+    <lastUpdated>20220605023008</lastUpdated>
   </versioning>
 </metadata>
