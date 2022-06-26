@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ################################apache_v2################################
+  %%
+  Copyright (C) 2015 - 2022 Allen D. Ball
+  %%
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ################################apache_v2################################
+  -->
+<project xmlns:resolver="antlib:org.apache.maven.resolver.ant">
+  <property environment="env"/>
+  <property name="build.properties.file" location="build.properties"/>
+  <property file="${build.properties.file}"/>
+  <property name="resolver.offline"     value="true"/>
+  <property name="build.sysclasspath"   value="ignore"/>
+
+  <property name="src.dir"              location="src"/>
+
+  <property name="target.dir"           location="target"/>
+  <property name="target.classes.dir"   location="${target.dir}/classes"/>
+  <property name="target.headers.dir"   location="${target.dir}/headers"/>
+  <property name="target.objects.dir"   location="${target.dir}/objects"/>
+
+  <tstamp prefix="build">
+    <format property="timestamp" timezone="UTC" pattern="yyyyMMddHHmmssSSS"/>
+  </tstamp>
+
+  <resolver:pom id="pom" file="${basedir}/pom.xml"/>
+  <property name="artifact" value="${pom.artifactId}-${pom.version}.jar"/>
+  <resolver:resolve>
+    <dependencies pomRef="pom"/>
+    <path refid="compile.classpath" classpath="compile"/>
+    <path refid="runtime.classpath" classpath="runtime"/>
+    <properties/>
+  </resolver:resolve>
+
+  <path id="build.classpath">
+    <pathelement location="${target.classes.dir}"/>
+    <fileset dir="${target.dir}" includes="**/*.jar"/>
+    <path refid="compile.classpath"/>
+  </path>
+
+  <target name="install"
+          description="--> Installs pom.xml and artifacts to local repository."
+          depends="install-jar">
+    <resolver:install>
+      <pom file="${basedir}/pom.xml"/>
+    </resolver:install>
+  </target>
+
+  <target name="install-jar"
+          description="--> Install JAR library."
+          depends="jar">
+    <resolver:install>
+      <pom file="${basedir}/pom.xml"/>
+      <artifact file="${target.dir}/${artifact}"/>
+    </resolver:install>
+  </target>
+
+  <target name="jar"
+          description="--> Compile JAR library."
+          depends="jar-classes">
+    <delete file="${target.dir}/${artifact}"/>
+    <jar destfile="${target.dir}/${artifact}"
+         manifest="${target.classes.dir}/META-INF/MANIFEST.MF">
+      <fileset dir="${target.classes.dir}"/>
+    </jar>
+  </target>
+
+  <target name="jar-classes"
+          description="--> Compile Java source."
+          depends="jar-resources">
+    <javac source="${pom.properties.jse.target}"
+           target="${pom.properties.jse.target}"
+           destdir="${target.classes.dir}">
+      <compilerarg compiler="modern" value="-Xlint:all,-path"/>
+      <compilerarg compiler="modern" value="-Xdoclint"/>
+      <compilerarg compiler="modern" value="-Xdoclint:-missing"/>
+      <compilerarg compiler="modern" value="-Xdoclint:-reference"/>
+      <compilerarg compiler="modern" value="-Xpkginfo:always"/>
+      <compilerarg compiler="modern" value="-g:source,lines,vars"/>
+      <compilerarg compiler="modern" value="-parameters"/>
+      <classpath>
+        <path refid="build.classpath"/>
+      </classpath>
+      <src path="${src.dir}/main/java"/>
+    </javac>
+  </target>
+
+  <target name="jar-resources"
+          description="--> Copy JAR resources."
+          depends="">
+    <mkdir dir="${target.classes.dir}"/>
+    <copy filtering="true" preservelastmodified="true"
+          todir="${target.classes.dir}">
+      <fileset dir="${src.dir}/main/resources"/>
+    </copy>
+    <mkdir dir="${target.classes.dir}/META-INF/maven/${pom.groupId}/${pom.artifactId}"/>
+    <copy filtering="false" preservelastmodified="true"
+          todir="${target.classes.dir}/META-INF/maven/${pom.groupId}/${pom.artifactId}">
+      <fileset file="${basedir}/pom.xml"/>
+    </copy>
+    <propertyfile file="${target.classes.dir}/META-INF/maven/${pom.groupId}/${pom.artifactId}/pom.properties">
+      <entry key="groupId" value="${pom.groupId}"/>
+      <entry key="artifactId" value="${pom.artifactId}"/>
+      <entry key="version" value="${pom.version}"/>
+    </propertyfile>
+  </target>
+
+  <target name="clean"
+          description="--> Removes compilation files and directories."
+          depends="">
+    <delete dir="${target.dir}"/>
+  </target>
+</project>
